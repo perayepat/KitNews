@@ -20,20 +20,23 @@ class NewsTableViewCell: UITableViewCell {
     
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
         label.font = .systemFont(ofSize: 25, weight: .medium)
         return label
     }()
     
     private let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 12, weight: .regular)
         return label
     }()
     
     private let newsImageView: UIImageView = {
        let imageView = UIImageView()
-        imageView.backgroundColor = .systemRed
+        imageView.backgroundColor = .secondarySystemBackground
         imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -50,10 +53,32 @@ class NewsTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        newsTitleLabel.frame = CGRect(
+            x: 10,
+            y: 0,
+            width: contentView.frame.size.width - 170,
+            height: 70
+        )
+        subtitleLabel.frame = CGRect(
+            x: 10,
+            y: 70,
+            width: contentView.frame.size.width - 170,
+            height: contentView.frame.size.height / 2
+        )
+        
+        newsImageView.frame = CGRect(
+            x: contentView.frame.size.width - 160,
+            y: 5,
+            width: 160,
+            height: contentView.frame.size.height - 10
+        )
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        newsTitleLabel.text = nil
+        subtitleLabel.text = nil
+        newsImageView.image = nil
     }
     
     func configure(with viewModel: NewsTableViewCellViewModel){
@@ -63,8 +88,18 @@ class NewsTableViewCell: UITableViewCell {
         //configure image
         if let data = viewModel.imageData{
             newsImageView.image = UIImage(data: data)
-        } else {
+        } else if let url = viewModel.imageURL{
             /// Fetch image
+            URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+                guard let data = data, error == nil else {
+                    return
+                }
+                ///cache data
+                viewModel.imageData = data
+                DispatchQueue.main.async {
+                    self?.newsImageView.image = UIImage(data: data)
+                }
+            }.resume()
         }
     }
     
