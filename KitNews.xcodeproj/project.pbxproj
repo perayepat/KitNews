@@ -15,6 +15,7 @@
 		43224FDD29AAA5500054A0C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43224FDB29AAA5500054A0C5 /* LaunchScreen.storyboard */; };
 		43224FE529AAA6ED0054A0C5 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43224FE429AAA6ED0054A0C5 /* APICaller.swift */; };
 		43224FE829AAAA0C0054A0C5 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43224FE729AAAA0C0054A0C5 /* NewsModel.swift */; };
+		43224FEB29AAADA30054A0C5 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43224FEA29AAADA30054A0C5 /* NewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		43224FDE29AAA5500054A0C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		43224FE429AAA6ED0054A0C5 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		43224FE729AAAA0C0054A0C5 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		43224FEA29AAADA30054A0C5 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		43224FCF29AAA54B0054A0C5 /* KitNews */ = {
 			isa = PBXGroup;
 			children = (
+				43224FE929AAAD850054A0C5 /* Views */,
 				43224FE629AAA9FD0054A0C5 /* Model */,
 				43224FD029AAA54B0054A0C5 /* AppDelegate.swift */,
 				43224FD229AAA54B0054A0C5 /* SceneDelegate.swift */,
@@ -79,6 +82,14 @@
 				43224FE729AAAA0C0054A0C5 /* NewsModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		43224FE929AAAD850054A0C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				43224FEA29AAADA30054A0C5 /* NewsTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +165,7 @@
 			files = (
 				43224FD529AAA54B0054A0C5 /* ViewController.swift in Sources */,
 				43224FD129AAA54B0054A0C5 /* AppDelegate.swift in Sources */,
+				43224FEB29AAADA30054A0C5 /* NewsTableViewCell.swift in Sources */,
 				43224FD329AAA54B0054A0C5 /* SceneDelegate.swift in Sources */,
 				43224FE529AAA6ED0054A0C5 /* APICaller.swift in Sources */,
 				43224FE829AAAA0C0054A0C5 /* NewsModel.swift in Sources */,

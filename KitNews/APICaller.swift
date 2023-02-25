@@ -19,7 +19,7 @@ final class APICaller {
     
     private init() {}
     
-    public func getTopStories(completion: @escaping (Result<[String], Error>) -> Void){
+    public func getTopStories(completion: @escaping (Result<[Article], Error>) -> Void){
         guard let url = Constatnts.topHeadlinesURL else {
             completion(.failure(NetworkError.badURL))
             return
@@ -38,7 +38,7 @@ final class APICaller {
                 
                 do {
                     let result = try JSONDecoder().decode(APIResonse.self, from: data)
-                    print("Articles : \(result.articles.count)")
+                    completion(.success(result.articles))
                 }catch{
                     completion(.failure(NetworkError.decodingError))
                 }
